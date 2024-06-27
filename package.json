@@ -3,20 +3,28 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "local": "env-cmd -f .env.local next dev -p 3001",
+    "dev": "env-cmd -f .env.development next dev -p 3001",
+    "stage": "env-cmd -f .env.stage next dev -p 3001",
+    "prod": "env-cmd -f .env.production next dev -p 3001",
+    "build": "NEXT_PRIVATE_LOCAL_WEBPACK=true next build",
+    "start": "NEXT_PRIVATE_LOCAL_WEBPACK=true next start",
+    "lint": "NEXT_PRIVATE_LOCAL_WEBPACK=true next lint"
   },
   "dependencies": {
+    "@emotion/react": "^11.11.4",
+    "@module-federation/nextjs-mf": "^8.1.10",
+    "env-cmd": "^10.1.0",
+    "next": "^13.1.6",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "typescript": "5.5.2"
+  },
+  "devDependencies": {
     "@types/node": "20.14.9",
     "@types/react": "18.3.3",
     "@types/react-dom": "18.3.0",
     "eslint": "8.57.0",
-    "eslint-config-next": "14.2.4",
-    "next": "14.2.4",
-    "react": "18.3.1",
-    "react-dom": "18.3.1",
-    "typescript": "5.5.2"
+    "eslint-config-next": "14.2.4"
   }
 }
