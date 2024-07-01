@@ -1,13 +1,13 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from "next/server";
 
 export default async function middleware(req: NextRequest) {
   const { pathname, searchParams } = req.nextUrl.clone();
 
-  if (pathname.startsWith('/api-softeer')) {
+  if (pathname.startsWith("/api-softeer")) {
     const apiUrl = new URL(
-      process.env.SOFTEER_FO_URL || 'https://developers.hyundaimotorgroup.com'
+      process.env.SOFTEER_FO_URL || "https://developers.hyundaimotorgroup.com"
     );
-    apiUrl.pathname = pathname.replace('/api-softeer', '/api');
+    apiUrl.pathname = pathname.replace("/api-softeer", "/api");
     apiUrl.search = searchParams.toString();
 
     try {
@@ -19,7 +19,7 @@ export default async function middleware(req: NextRequest) {
         headers: apiResponse.headers,
       });
     } catch (error) {
-      return new Response('API request failed', { status: 502 });
+      return new Response("API request failed", { status: 502 });
     }
   }
 

@@ -7,9 +7,9 @@
     "dev": "env-cmd -f .env.development next dev -p 3001",
     "stage": "env-cmd -f .env.stage next dev -p 3001",
     "prod": "env-cmd -f .env.production next dev -p 3001",
-    "build": "NEXT_PRIVATE_LOCAL_WEBPACK=true next build",
-    "start": "NEXT_PRIVATE_LOCAL_WEBPACK=true next start",
-    "lint": "NEXT_PRIVATE_LOCAL_WEBPACK=true next lint"
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
   },
   "dependencies": {
     "@emotion/react": "^11.11.4",

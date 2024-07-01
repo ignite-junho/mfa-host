@@ -1,4 +1,4 @@
-const { NextFederationPlugin } = require('@module-federation/nextjs-mf');
+const { NextFederationPlugin } = require("@module-federation/nextjs-mf");
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -6,14 +6,15 @@ const nextConfig = {
   swcMinify: true,
   webpack(config, options) {
     const { isServer } = options;
-    const remoteDir = isServer ? 'ssr' : 'chunks';
+    const remoteDir = isServer ? "ssr" : "chunks";
 
     config.plugins.push(
       new NextFederationPlugin({
-        name: 'softeer-product',
+        name: "softeer-product",
         filename: `static/${remoteDir}/remoteEntry.js`,
         remotes: {
-          ['softeer-fo']: `softeer-fo@${process.env.SOFTEER_FO_URL}/_next/static/chunks/remoteEntry.js`,
+          // ["softeer-fo"]: `softeer-fo@http://local-developers.hyundaimotorgroup.com:3000/_next/static/chunks/remoteEntry.js`,
+          ["softeer-fo"]: `softeer-fo@https://dev-developers.hyundaimotorgroup.com/_next/static/chunks/remoteEntry.js`,
         },
       })
     );
